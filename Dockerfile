@@ -5,4 +5,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libexpat1-dev \
     curl \
+    git \
     && rm -rf /var/lib/apt/lists/*
