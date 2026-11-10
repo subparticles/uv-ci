@@ -16,10 +16,5 @@ RUN uv python install 3.14t \
     && ln -s "$(uv python find 3.14t)" /usr/local/bin/python \
     && ln -s /usr/local/bin/python /usr/local/bin/python3
 
-RUN curl -fsSL https://dl.dagger.io/dagger/install.sh -o /tmp/install-dagger.sh \
-    && DAGGER_VERSION=0.20.0 BIN_DIR=/usr/local/bin sh /tmp/install-dagger.sh \
-    && rm /tmp/install-dagger.sh
-
 RUN python -c "import sys, sysconfig; print(sys.version); assert sys.version_info[:2] == (3, 14); assert sysconfig.get_config_var('Py_GIL_DISABLED') == 1; assert not sys._is_gil_enabled()" \
-    && uv --version \
-    && dagger version
+    && uv --version
